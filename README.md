@@ -8,7 +8,7 @@ This skill should be used when the user asks to "ask about OpenClaw", "query Ope
 
 ## What It Does
 
-Instead of relying on static, potentially outdated knowledge, this skill queries the **DeepWiki MCP server** against the `openclaw/openclaw` repository documentation on demand. It covers all major OpenClaw domains:
+Instead of relying on static, potentially outdated knowledge, this skill uses the **smart-search** skill to query the `openclaw/openclaw` repository documentation on demand. It covers all major OpenClaw domains:
 
 - **Installation & Onboarding** — setup wizard, daemon management
 - **Gateway & Configuration** — `openclaw.json` (JSON5), WebSocket service
@@ -30,7 +30,7 @@ claude skill add joneshong-skills/openclaw-mentor
 
 ### Prerequisites
 
-- A running DeepWiki MCP server (the skill uses `mcp__deepwiki__ask_question` and related tools)
+- The **smart-search** skill installed (`~/.claude/skills/smart-search/`)
 
 ## Usage
 

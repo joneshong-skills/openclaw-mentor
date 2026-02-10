@@ -8,11 +8,11 @@ disable-model-invocation: true
 
 # OpenClaw Mentor
 
-An AI mentor for OpenClaw — the self-hosted multi-channel AI agent gateway. Instead of containing all knowledge internally, this skill leverages the DeepWiki MCP server to query the `openclaw/openclaw` repository documentation on demand.
+An AI mentor for OpenClaw — the self-hosted multi-channel AI agent gateway. Instead of containing all knowledge internally, this skill uses the **smart-search** skill to query the `openclaw/openclaw` repository documentation on demand.
 
 ## Core Principle
 
-When answering OpenClaw questions, **always query DeepWiki first** rather than relying on potentially outdated knowledge. OpenClaw evolves rapidly; live documentation is the source of truth.
+When answering OpenClaw questions, **always query live documentation first** via the smart-search skill rather than relying on potentially outdated knowledge. OpenClaw evolves rapidly; live documentation is the source of truth.
 
 ## How to Answer Questions
 
@@ -37,45 +37,20 @@ Map the user's question to one of OpenClaw's main domains:
 | Troubleshooting | doctor, health, error, fix, debug | 14.x |
 | Development | architecture, protocol, build, CI/CD | 15.x |
 
-### Step 2: Query DeepWiki
+### Step 2: Query Documentation via smart-search
 
-Use the DeepWiki MCP tools in this order of preference:
-
-#### Primary: Ask a Targeted Question
-
-```
-mcp__deepwiki__ask_question
-  repoName: "openclaw/openclaw"
-  question: "<specific, detailed question>"
-```
+Use the **smart-search** skill to query OpenClaw documentation. Smart-search automatically routes queries across DeepWiki, Context7, and Perplexity for the best answer.
 
 **Query writing tips:**
-- Be specific: "How to configure WhatsApp channel with group message filtering" instead of "WhatsApp setup"
+- Be specific: "How to configure WhatsApp channel with group message filtering in OpenClaw" instead of "WhatsApp setup"
 - Ask for examples: "Show example openclaw.json configuration for multi-agent setup with model failover"
 - Request step-by-step: "Step-by-step guide to deploy OpenClaw on a VPS with Tailscale"
-- Include context: "How to troubleshoot Gateway connection timeout on port 18789"
-
-#### Secondary: Browse Wiki Structure
-
-```
-mcp__deepwiki__read_wiki_structure
-  repoName: "openclaw/openclaw"
-```
-
-Use this to discover available documentation topics when unsure which section covers the user's question.
-
-#### Tertiary: Read Full Wiki (caution — very large)
-
-```
-mcp__deepwiki__read_wiki_contents
-  repoName: "openclaw/openclaw"
-```
-
-Avoid this unless absolutely necessary — the output is ~2M characters. Prefer targeted questions instead.
+- Include context: "How to troubleshoot OpenClaw Gateway connection timeout on port 18789"
+- Always include "OpenClaw" in the query for better search results
 
 ### Step 3: Synthesize and Respond
 
-After receiving DeepWiki results:
+After receiving search results:
 
 1. Extract the relevant information
 2. Adapt the answer to the user's specific context
@@ -111,7 +86,7 @@ After receiving DeepWiki results:
 
 ## OpenClaw Quick Reference
 
-A minimal reference to orient queries — not a substitute for querying DeepWiki.
+A minimal reference to orient queries — not a substitute for querying live documentation via smart-search.
 
 ### Architecture
 - **Gateway**: Always-on Node.js process, WebSocket on `ws://127.0.0.1:18789`
@@ -145,4 +120,4 @@ A minimal reference to orient queries — not a substitute for querying DeepWiki
 ### Reference Files
 
 For detailed topic-specific query templates:
-- **`references/query-templates.md`** - Pre-built DeepWiki query templates organized by topic
+- **`references/query-templates.md`** - Pre-built query templates organized by topic for smart-search

@@ -1,6 +1,6 @@
-# DeepWiki Query Templates for OpenClaw
+# Query Templates for OpenClaw
 
-Pre-built query templates organized by topic. Use these as starting points when querying DeepWiki with `mcp__deepwiki__ask_question`.
+Pre-built query templates organized by topic. Use these as starting points when querying via the **smart-search** skill.
 
 ## Installation & Setup
 
