@@ -1,3 +1,5 @@
+[English](README.md) | [繁體中文](README.zh.md)
+
 # openclaw-mentor
 
 A Claude Code skill that acts as an AI mentor for [OpenClaw](https://github.com/openclaw/openclaw) — the self-hosted multi-channel AI agent gateway.
