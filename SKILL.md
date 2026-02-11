@@ -2,7 +2,8 @@
 name: openclaw-mentor
 description: This skill should be used when the user asks to "ask about OpenClaw", "query OpenClaw docs", "how does OpenClaw work", "OpenClaw help", "openclaw mentor", or needs guidance on OpenClaw configuration, CLI commands, channels, agents, skills, memory, deployment, or troubleshooting.
 version: 0.1.0
-tools: Read, Glob, Grep, Bash
+tools: Read, WebSearch
+argument-hint: <OpenClaw question in any language>
 disable-model-invocation: true
 ---
 
@@ -37,9 +38,12 @@ Map the user's question to one of OpenClaw's main domains:
 | Troubleshooting | doctor, health, error, fix, debug | 14.x |
 | Development | architecture, protocol, build, CI/CD | 15.x |
 
-### Step 2: Query Documentation via smart-search
+### Step 2: Query Documentation
 
-Use the **smart-search** skill to query OpenClaw documentation. Smart-search automatically routes queries across DeepWiki, Context7, and Perplexity for the best answer.
+Search for OpenClaw information using these tools directly:
+
+1. **DeepWiki (preferred for OpenClaw)**: Call `mcp__deepwiki__ask_question` with `repoName: "openclaw/openclaw"` and your question. This gives architecture-level understanding of the OpenClaw codebase and docs.
+2. **WebSearch (fallback)**: Use `WebSearch` for general queries, recent changes, or when DeepWiki lacks coverage. Include "OpenClaw" in the query for better results.
 
 **Query writing tips:**
 - Be specific: "How to configure WhatsApp channel with group message filtering in OpenClaw" instead of "WhatsApp setup"
