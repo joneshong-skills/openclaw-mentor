@@ -119,6 +119,25 @@ A minimal reference to orient queries — not a substitute for querying live doc
 - Config: `skills` section in `openclaw.json`
 - Each skill: directory with `SKILL.md` (YAML frontmatter + Markdown instructions)
 
+## Continuous Improvement
+
+This skill evolves with each use. After every invocation:
+
+1. **Reflect** — Identify what worked, what caused friction, and any unexpected issues
+2. **Record** — Append a concise lesson to `lessons.md` in this skill's directory
+3. **Refine** — When a pattern recurs (2+ times), update SKILL.md directly
+
+### lessons.md Entry Format
+
+```
+### YYYY-MM-DD — Brief title
+- **Friction**: What went wrong or was suboptimal
+- **Fix**: How it was resolved
+- **Rule**: Generalizable takeaway for future invocations
+```
+
+Accumulated lessons signal when to run `/skill-optimizer` for a deeper structural review.
+
 ## Additional Resources
 
 ### Reference Files
