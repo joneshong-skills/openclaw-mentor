@@ -1,6 +1,6 @@
 ---
 name: openclaw-mentor
-description: This skill should be used when the user asks to "ask about OpenClaw", "query OpenClaw docs", "how does OpenClaw work", "OpenClaw help", "openclaw mentor", or needs guidance on OpenClaw configuration, CLI commands, channels, agents, skills, memory, deployment, or troubleshooting.
+description: "openclaw, mentor, ask, query, docs, work, help"
 version: 0.1.0
 tools: Read, WebSearch
 argument-hint: <OpenClaw question in any language>
@@ -42,7 +42,7 @@ Map the user's question to one of OpenClaw's main domains:
 
 Search for OpenClaw information using these tools directly:
 
-1. **DeepWiki (preferred for OpenClaw)**: Call `mcp__deepwiki__ask_question` with `repoName: "openclaw/openclaw"` and your question. This gives architecture-level understanding of the OpenClaw codebase and docs.
+1. **DeepWiki (preferred for OpenClaw)**: Query via mcpproxy `call_tool_read(server="deepwiki", tool="ask_question", arguments={repoName: "openclaw/openclaw", question: ...})`. This gives architecture-level understanding of the OpenClaw codebase and docs.
 2. **WebSearch (fallback)**: Use `WebSearch` for general queries, recent changes, or when DeepWiki lacks coverage. Include "OpenClaw" in the query for better results.
 
 **Query writing tips:**
